@@ -1,0 +1,6 @@
+.jumbotron
+  .container
+    .col-md-12
+      = image_tag "dogs_bg.png", class: "img-responsive"
+      -if current_user
+        %p.text-center= link_to "PAW my puppy!", "#", class: "btn btn-lg btn-success paw-button"
