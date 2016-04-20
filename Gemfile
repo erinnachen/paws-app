@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+
 gem 'rails', '4.2.5.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
@@ -10,8 +11,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pg'
 gem 'rails_12factor', group: :production
-gem 'haml-rails'
+gem 'haml-rails', "~> 0.9"
 gem 'unicorn-rails'
+gem "omniauth-google-oauth2"
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.0'

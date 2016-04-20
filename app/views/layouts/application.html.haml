@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title PawsApp
+    = stylesheet_link_tag    'application', media: 'all'
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+  %body
+    = render partial: "shared/navbar"
+    = yield
+    = javascript_include_tag 'application'

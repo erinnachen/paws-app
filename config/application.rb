@@ -10,9 +10,10 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
-
 # Require the gems listed in Gemfile, including any gems
+
 # you've limited to :test, :development, or :production.
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
 Bundler.require(*Rails.groups)
 
 module PawsApp
