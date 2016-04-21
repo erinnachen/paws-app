@@ -1,7 +1,41 @@
 body {
   padding-top: 50px;
+  background-color: #89C35C
 }
 
 .paw-button {
   margin-top: 20px;
+}
+
+.fat-border {
+  border: 5px solid black;
+}
+
+.top-margin-20 {
+  margin-top: 20px;
+}
+
+.top-padding-20 {
+  padding-top: 20px;
+}
+
+.bottom-padding-20 {
+  padding-bottom: 20px;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.dog-image {
+  background-color: white;
+}
+
+.dog-image-analysis {
+  vertical-align: middle;
+}
+
+hr {
+  border-width: 3px;
+  color: magenta;
 }

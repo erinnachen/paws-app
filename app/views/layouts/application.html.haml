@@ -1,12 +1,14 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title PawsApp
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title PAWs
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
   %body
     = render partial: "shared/navbar"
+    = render partial: "shared/flash_messages"
     = yield
+    = render partial: "shared/footer"
     = javascript_include_tag 'application'
