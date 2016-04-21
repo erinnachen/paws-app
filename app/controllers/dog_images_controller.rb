@@ -8,7 +8,6 @@ class DogImagesController < ApplicationController
     @doggie = DogImage.new(dog_image_params)
     @doggie.user = current_user
     if @doggie.save
-      flash[:success]= "Your puppy is being PAWed"
       redirect_to dog_image_path(@doggie)
     else
       flash.now[:danger]= @doggie.errors.full_messages
@@ -18,6 +17,14 @@ class DogImagesController < ApplicationController
 
   def show
     @doggie = DogImage.find(params[:id])
+  end
+
+  def update
+    @doggie = DogImage.find(params[:id])
+    @doggie.breeds << Breed.find_or_initialize_by(name: params[:breed])
+    if @doggie.save
+      head :ok, content_type: "text/json"
+    end
   end
 
   def analysis
