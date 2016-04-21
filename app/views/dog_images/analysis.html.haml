@@ -5,8 +5,11 @@
                  class: "img-responsive center-block top-padding-20 bottom-padding-20",
                  alt: "dog placeholder"
     .col-md-6.vcenter
-      %h1.text-center PAWs believes your doggie is a:
-      %h2.text-center German Shepherd
+      -if @doggie.breeds.empty?
+        %h1.text-center PAWs can't figure out your image 🐺
+      -else
+        %h1.text-center PAWs believes your doggie is a:
+        %h2.text-center= @doggie.breeds.first.name
       <br>
       %h4.text-center Is this correct?
       <br>
