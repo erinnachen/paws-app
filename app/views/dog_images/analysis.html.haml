@@ -1,0 +1,15 @@
+.container.dog-image-analysis
+  .col-md-10.col-md-offset-1.fat-border.top-margin-20.white-bg
+    .col-md-6
+      =image_tag @doggie.image,
+                 class: "img-responsive center-block top-padding-20 bottom-padding-20",
+                 alt: "dog placeholder"
+    .col-md-6.vcenter
+      %h1.text-center PAWs believes your doggie is a:
+      %h2.text-center German Shepherd
+      <br>
+      %h4.text-center Is this correct?
+      <br>
+      %p.text-center
+        =link_to "How did you know?!", report_dog_image_path(@doggie), class: "btn btn-lg btn-success"
+        =link_to "Not quite...", "#", class: "btn btn-lg btn-danger"

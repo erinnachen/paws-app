@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420003430) do
+ActiveRecord::Schema.define(version: 20160420170304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dog_images", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "dog_images", ["user_id"], name: "index_dog_images_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "uid"
@@ -25,4 +37,5 @@ ActiveRecord::Schema.define(version: 20160420003430) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "dog_images", "users"
 end

@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :dog_image do
+    user nil
+  end
+
   factory :user do
     uid "MyString"
     name "MyString"
