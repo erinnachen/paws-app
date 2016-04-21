@@ -14,5 +14,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
 # Ignore test coverage files from SimpleCov
 /coverage
+
+# Ignore local image files
+/dog_images
