@@ -14,5 +14,5 @@
       %h4.text-center Is this correct?
       <br>
       %p.text-center
-        =link_to "How did you know?!", report_dog_image_path(@doggie), class: "btn btn-lg btn-success"
+        =link_to "How did you know?!", result_dog_image_path(id: @doggie.id, result: "correct"), class: "btn btn-lg btn-success", method: :patch
         =link_to "Not quite...", "#", class: "btn btn-lg btn-danger"
