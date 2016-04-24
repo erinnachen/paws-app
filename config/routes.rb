@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get "/analysis", to: "dog_images#analysis"
       get "/report", to: "dog_images#report"
+      patch "/result", to: "dog_images#update_result"
     end
   end
 end

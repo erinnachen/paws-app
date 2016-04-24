@@ -27,6 +27,12 @@ class DogImagesController < ApplicationController
     end
   end
 
+  def update_result
+    @doggie = DogImage.find(params[:id])
+    @doggie.update(result: params[:result])
+    redirect_to report_dog_image_path(@doggie.id)
+  end
+
   def analysis
     @doggie = DogImage.find(params[:id])
   end
