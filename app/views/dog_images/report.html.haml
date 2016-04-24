@@ -1,7 +1,9 @@
 .container.dog-image-report
   .col-md-12.fat-border.top-margin-20.white-bg
+    %h1.text-center PAWs Report
     =image_tag @doggie.image,
                class: "img-responsive center-block top-padding-20 bottom-padding-20",
                alt: "dog placeholder"
     %hr/
-    %h1.text-center PAWs Report
+    .statistics
+      %h3= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"

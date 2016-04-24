@@ -104,4 +104,9 @@ module SpecHelpers
       }
     })
   end
+
+  def login
+    visit '/'
+    click_on "Sign in with Google"
+  end
 end
