@@ -10,5 +10,9 @@
         %h3= "Breed: #{@doggie.breeds.first.name}"
         %h3= "PAWs was #{@doggie.result}"
     %hr/
-    .statistics.row
+    .image-statistics.row
       %h3.text-center= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
+    .paws-statistics.row
+      .text-center
+        %canvas#buyers{width:"600",height:"400"}
+      .btn.btn-lg.btn-success.text-center#chart_updater Update chart

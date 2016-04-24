@@ -13,9 +13,12 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'haml-rails', "~> 0.9"
 gem 'unicorn-rails'
+
 gem "omniauth-google-oauth2"
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '>= 2.0.34'
+
+gem 'chart-js-rails'
 
 group :development, :test do
   gem 'pry'
