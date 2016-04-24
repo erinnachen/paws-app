@@ -39,6 +39,7 @@ class DogImagesController < ApplicationController
 
   def report
     @doggie = DogImage.find(params[:id])
+    @top_breeds = Breed.top_breeds(@doggie.breeds.first)
   end
 
   private

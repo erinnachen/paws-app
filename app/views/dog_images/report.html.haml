@@ -10,5 +10,10 @@
         %h3= "Breed: #{@doggie.breeds.first.name}"
         %h3= "PAWs was #{@doggie.result}"
     %hr/
-    .statistics.row
-      %h3.text-center= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
+    .statistics
+      .row
+        %h3.text-center= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
+
+      .row#top-breeds-analyzed
+        - @top_breeds.each do |breed|
+          %li= "#{breed.name} -- Count: #{breed.image_count}"
