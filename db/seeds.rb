@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+breeds_info = File.read(Rails.root.join('db', 'support','breeds.txt')).chomp.split("\n")
+breeds_info.each do |breed|
+  id, name = breed.split(", ")
+  Breed.create(id: id, name: name)
+end
