@@ -3,7 +3,7 @@ class Breed < ActiveRecord::Base
   has_many :dog_images, through: :dog_breeds
 
   def analyzer_accuracy
-    (dog_images.where(result: "correct").count*100.0)/(dog_images.count)
+    (dog_images.where(result: "correct").count*100.0)/(dog_images.where.not(result: nil).count)
   end
 
   def self.top_breeds(include_breed)
@@ -19,5 +19,10 @@ class Breed < ActiveRecord::Base
 
   def self.get_breed(breed)
     self.select("breeds.*, count(dog_breeds.dog_image_id) AS image_count").joins(:dog_breeds).group("breeds.id").order('image_count DESC').where(id: breed.id).first
+  end
+
+  def self.top_breeds_with_count(include_breed)
+    breeds = top_breeds(include_breed)
+    {breeds: breeds.map(&:name), count: breeds.map(&:image_count)}
   end
 end

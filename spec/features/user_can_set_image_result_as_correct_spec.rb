@@ -10,6 +10,7 @@ RSpec.feature "User sets image result to correct", type: :feature do
     image = create(:dog_image, breeds: [breed])
     create(:dog_image, breeds: [breed], result: "correct")
     create(:dog_image, breeds: [breed], result: "wrong")
+    create(:dog_image, breeds: [breed])
 
     visit "/dog_images/#{image.id}/analysis"
     expect(page).to have_content "PAWs believes your doggie is a: Australian Shepherd"
