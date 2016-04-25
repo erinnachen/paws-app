@@ -7,12 +7,16 @@
                    class: "img-responsive center-block top-padding-20 bottom-padding-20",
                    alt: "dog placeholder"
       .col-md-6
-        %h3= "Breed: #{@doggie.breeds.first.name}"
+        -if @doggie.breeds.first
+          %h3= "Breed: #{@doggie.breeds.first.name}"
+        -else
+          %h3= "Breed was unknown"
         %h3= "PAWs was #{@doggie.result}"
     %hr/
     .statistics
       .row
-        %h3.text-center= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
+        -if @doggie.breeds.first
+          %h3.text-center= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
       .row
         .text-center.col-md-6
           %h3 Top breeds analyzed by PAWs
