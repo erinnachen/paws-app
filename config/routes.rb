@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       patch "/result", to: "dog_images#update_result"
     end
   end
+
+  get "/charts/top_breeds/:id", to: "charts#top_breeds", defaults: {format: :json}
 end

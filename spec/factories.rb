@@ -5,12 +5,12 @@ FactoryGirl.define do
   end
 
   factory :breed do
-    name "Shiba Shiba"
+    name
   end
 
   factory :dog_image do
     user
-    image { File.new("#{Rails.root}/spec/support/fixtures/aussie.jpg") } 
+    image { File.new("#{Rails.root}/spec/support/fixtures/aussie.jpg") }
   end
 
   factory :user do
@@ -19,4 +19,6 @@ FactoryGirl.define do
     email "doglover@example.com"
     oauth_token "gianthash2y3ahafnvaks"
   end
+
+  sequence(:name) { |n| "Breed " + n.to_s }
 end
