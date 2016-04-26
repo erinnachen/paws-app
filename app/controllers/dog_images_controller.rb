@@ -35,8 +35,15 @@ class DogImagesController < ApplicationController
 
   def update_wrong_result
     @doggie = DogImage.find(params[:id])
-    unless @doggie.breeds.first.id == params[:dog_image][:breeds].to_i
+    if params[:dog_image][:breeds].to_i == 285 && !@doggie.cat
+      @doggie.update(result: "wrong", cat: true)
+      redirect_to analysis_dog_image_path(@doggie.id) and return
+    elsif params[:dog_image][:breeds].to_i == 285
+      @doggie.update(result: "correct")
+      redirect_to analysis_dog_image_path(@doggie.id) and return
+    elsif !@doggie.breeds.first || @doggie.breeds.first.id != params[:dog_image][:breeds].to_i
       @doggie.update(result: "wrong")
+      flash[:alert] = "SOOOO SOOO0 SORRY for the troll video" if @doggie.cat
       @doggie.cat = false
       @doggie.dog_breeds.destroy_all
       @doggie.breeds << Breed.find(params[:dog_image][:breeds].to_i)

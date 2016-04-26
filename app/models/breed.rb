@@ -2,8 +2,6 @@ class Breed < ActiveRecord::Base
   has_many :dog_breeds
   has_many :dog_images, through: :dog_breeds
 
-  scope :ordered, -> { order(name: :asc) }
-
   def analyzer_accuracy
     (dog_images.where(result: "correct").count*100.0)/(dog_images.where.not(result: nil).count)
   end
@@ -26,5 +24,10 @@ class Breed < ActiveRecord::Base
   def self.top_breeds_with_count(include_breed)
     breeds = top_breeds(include_breed)
     {breeds: breeds.map(&:name), count: breeds.map(&:image_count)}
+  end
+
+  def self.ordered
+    breeds = order(name: :asc)
+    breeds << Breed.new(id: 285, name: "Actually a cat")
   end
 end
