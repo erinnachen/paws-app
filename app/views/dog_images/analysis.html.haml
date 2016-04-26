@@ -26,5 +26,5 @@
         %p.text-center
           %button.btn.btn-lg.btn-danger#wrong-btn I am not a troll!
       =form_for @doggie, id: "correction-form", url: wrong_result_dog_image_path(@doggie.id), method: "patch" do |f|
-        = f.collection_select(:breeds, Breed.all, :id, :name)
+        = f.collection_select(:breeds, Breed.ordered, :id, :name)
         = f.submit "Update dog data"
