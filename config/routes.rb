@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get "/analysis", to: "dog_images#analysis"
       get "/report", to: "dog_images#report"
       patch "/result", to: "dog_images#update_result"
+      patch "/wrong_result", to: "dog_images#update_wrong_result"
     end
   end
 

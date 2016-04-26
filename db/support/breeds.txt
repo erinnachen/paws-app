@@ -13,7 +13,7 @@
 163, Bloodhound
 164, Bluetick Coonhound
 165, Black-and-tan Coonhound
-166, Walker Hound
+166, Treeing Walker Coonhound
 167, English Foxhound
 168, Redbone Coonhound
 169, Borzoi
@@ -110,8 +110,8 @@
 260, Chow
 261, Keeshond
 262, Brabancon Griffon
-263, Pembroke
-264, Cardigan
+263, Pembroke Welsh Corgi
+264, Cardigan Welsh Corgi
 265, Toy Poodle
 266, Miniature Poodle
 267, Standard Poodle

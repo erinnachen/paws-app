@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  if ($(".dog-image-show").length === 0) {
+  if ($(".dog-image-report").length > 0) {
   $( "#chart_updater" ).hide()
   var url = document.URL.split("/")
   var id = url[url.length - 2]
