@@ -124,3 +124,5 @@
 274, Dhole
 275, African Hunting Dog
 276, Hyena
+1000, Mix
+1001, Other
