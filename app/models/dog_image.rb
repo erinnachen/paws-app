@@ -1,7 +1,9 @@
 class DogImage < ActiveRecord::Base
   belongs_to :user
+  validates :user, presence: true
   has_many :dog_breeds
   has_many :breeds, through: :dog_breeds
+
 
   has_attached_file :image, path: "dog_images/image-:id.:extension"
   validates :image, attachment_presence: true
