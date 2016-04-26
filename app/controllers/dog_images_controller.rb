@@ -40,6 +40,9 @@ class DogImagesController < ApplicationController
   def report
     @doggie = current_user.dog_images.find(params[:id])
     @top_breeds = Breed.top_breeds(@doggie.breeds.first)
+    if @doggie.cat?
+      redirect_to analysis_dog_image_path(@doggie.id)
+    end
   end
 
   private
@@ -51,5 +54,8 @@ class DogImagesController < ApplicationController
     def process_breed_info
       breed = Breed.find_by(id: params[:breed_id])
       @doggie.breeds << breed if breed
+      if params[:breed_id].to_i > 280 && params[:breed_id].to_i < 294
+        @doggie.update(cat: true)
+      end
     end
 end

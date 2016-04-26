@@ -5,12 +5,14 @@ RSpec.feature "User sets image result to correct", type: :feature do
   scenario "sees the accuracy for the breed" do
     stub_omniauth
     login
+    user = User.find_by(uid: "12789537")
+    user2 = User.create(uid: "11111", name: "Janey")
 
     breed = create(:breed, name: "Australian Shepherd")
-    image = create(:dog_image, breeds: [breed])
-    create(:dog_image, breeds: [breed], result: "correct")
-    create(:dog_image, breeds: [breed], result: "wrong")
-    create(:dog_image, breeds: [breed])
+    image = create(:dog_image, breeds: [breed], user: user)
+    create(:dog_image, breeds: [breed], result: "correct", user: user)
+    create(:dog_image, breeds: [breed], result: "wrong", user: user2)
+    create(:dog_image, breeds: [breed], user: user2)
 
     visit "/dog_images/#{image.id}/analysis"
     expect(page).to have_content "PAWs believes your doggie is a: Australian Shepherd"
