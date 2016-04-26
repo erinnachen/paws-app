@@ -3,25 +3,32 @@
     .col-md-6
       -unless @doggie.cat?
         =image_tag @doggie.image,
-                   class: "img-responsive center-block top-padding-20 bottom-padding-20",
+                   class: "img-responsive center-block top-padding-20 bottom-padding-20 dog-image",
                    alt: "dog placeholder"
       -else
         %iframe{width:"420",height:"315",src:"https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",frameborder:"0",allowfullscreen:true}
-    .col-md-6
-      -unless @doggie.cat?
-        -if @doggie.breeds.empty?
-          %h1.text-center PAWs can't figure out your image 🐺
+    -unless @doggie.result
+      .col-md-6
+        -unless @doggie.cat?
+          -if @doggie.breeds.empty?
+            %h1.text-center PAWs can't figure out your image 🐺
+          -else
+            %h1.text-center PAWs believes your doggie is a:
+            %h2.text-center= @doggie.breeds.first.name
+          <br>
+          %h4.text-center Is this correct?
+          <br>
+          %p.text-center
+            =link_to "How did you know?!", result_dog_image_path(id: @doggie.id, result: "correct"), class: "btn btn-lg btn-success", id: "correct-btn", method: :patch
+            %button.btn.btn-lg.btn-danger#wrong-btn Not quite...
         -else
-          %h1.text-center PAWs believes your doggie is a:
-          %h2.text-center= @doggie.breeds.first.name
-        <br>
-        %h4.text-center Is this correct?
-        <br>
-        %p.text-center
-          =link_to "How did you know?!", result_dog_image_path(id: @doggie.id, result: "correct"), class: "btn btn-lg btn-success", method: :patch
-          =link_to "Not quite...", "#", class: "btn btn-lg btn-danger"
-      -else
-        %h1.text-center Stop uploading cat images! 🐺
-        <br>
-        %p.text-center
-          =link_to "I am not a troll!", "#", class: "btn btn-lg btn-danger"
+          %h1.text-center Stop uploading cat images! 🐺
+          <br>
+          %p.text-center
+            %button.btn.btn-lg.btn-danger#wrong-btn I am not a troll!
+        =form_for @doggie, id: "correction-form", url: wrong_result_dog_image_path(@doggie.id), method: "patch" do |f|
+          = f.collection_select(:breeds, Breed.ordered, :id, :name)
+          = f.submit "Update dog data"
+    -else
+      %h1.text-center You have registered your doggie data
+      %h4.text-center=link_to "See your PAWs report", report_dog_image_path(id: @doggie.id)

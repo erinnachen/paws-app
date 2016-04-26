@@ -1,6 +1,6 @@
 class DogImage < ActiveRecord::Base
   belongs_to :user
-  validates :user, presence: true
+  validates :user_id, presence: true
   has_many :dog_breeds
   has_many :breeds, through: :dog_breeds
 
