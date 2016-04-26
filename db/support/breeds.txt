@@ -111,7 +111,7 @@
 261, Keeshond
 262, Brabancon Griffon
 263, Pembroke
-264, Cardigan
+264, Cardigan Welsh Corgi
 265, Toy Poodle
 266, Miniature Poodle
 267, Standard Poodle

@@ -10,3 +10,5 @@ breeds_info.each do |breed|
   id, name = breed.split(", ")
   Breed.create(id: id, name: name)
 end
+
+User.create(name: "thedogist")

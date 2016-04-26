@@ -17,6 +17,7 @@ gem "omniauth-google-oauth2"
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '>= 2.0.34'
 gem 'responders', '~> 2.0'
+gem 'faraday'
 
 group :development, :test do
   gem 'pry'
