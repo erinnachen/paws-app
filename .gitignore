@@ -20,3 +20,6 @@
 
 # Ignore local image files
 /dog_images
+/*.txt
+
+/spec/cassettes

@@ -8,7 +8,7 @@
 breeds_info = File.read(Rails.root.join('db', 'support','breeds.txt')).chomp.split("\n")
 breeds_info.each do |breed|
   id, name = breed.split(", ")
-  Breed.create(id: id, name: name)
+  Breed.find_or_create_by(id: id, name: name)
 end
 
 User.create(name: "thedogist")
