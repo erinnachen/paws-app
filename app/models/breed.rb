@@ -25,4 +25,12 @@ class Breed < ActiveRecord::Base
     breeds = top_breeds(include_breed)
     {breeds: breeds.map(&:name), count: breeds.map(&:image_count)}
   end
+
+  def self.ordered
+    breeds = where.not(id: 1000).order(name: :asc)
+    breeds << Breed.find_or_create_by(id: 1000, name: "Mix")
+    breeds << Breed.find_or_create_by(id: 1001, name: "Other")
+    breeds << Breed.new(id: 285, name: "Actually a cat")
+    breeds << Breed.new(id: 1002, name: "Not a dog")
+  end
 end

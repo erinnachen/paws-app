@@ -5,7 +5,8 @@
       .col-md-6
         =image_tag @doggie.image,
                    class: "img-responsive center-block top-padding-20 bottom-padding-20",
-                   alt: "dog placeholder"
+                   alt: "dog placeholder",
+                   id: "dog-image"
       .col-md-6
         -if @doggie.breeds.first
           %h3= "Breed: #{@doggie.breeds.first.name}"

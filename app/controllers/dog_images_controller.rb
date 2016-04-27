@@ -33,6 +33,27 @@ class DogImagesController < ApplicationController
     redirect_to report_dog_image_path(@doggie.id)
   end
 
+  def update_wrong_result
+    @doggie = DogImage.find(params[:id])
+    if params[:dog_image][:breeds].to_i == 285 && !@doggie.cat
+      @doggie.update(result: "wrong", cat: true)
+      redirect_to analysis_dog_image_path(@doggie.id) and return
+    elsif params[:dog_image][:breeds].to_i == 285
+      @doggie.update(result: "correct")
+      redirect_to analysis_dog_image_path(@doggie.id) and return
+    elsif !@doggie.breeds.first || @doggie.breeds.first.id != params[:dog_image][:breeds].to_i
+      @doggie.update(result: "wrong")
+      flash[:alert] = "SOOOO SOOO0 SORRY for the troll video" if @doggie.cat
+      @doggie.cat = false
+      @doggie.dog_breeds.destroy_all
+      @doggie.breeds << Breed.find(params[:dog_image][:breeds].to_i)
+      @doggie.save
+    else
+      @doggie.update(result: "correct")
+    end
+    redirect_to report_dog_image_path(@doggie.id)
+  end
+
   def analysis
     @doggie = current_user.dog_images.find(params[:id])
   end
@@ -40,6 +61,9 @@ class DogImagesController < ApplicationController
   def report
     @doggie = current_user.dog_images.find(params[:id])
     @top_breeds = Breed.top_breeds(@doggie.breeds.first)
+    if @doggie.cat?
+      redirect_to analysis_dog_image_path(@doggie.id)
+    end
   end
 
   private
@@ -51,5 +75,8 @@ class DogImagesController < ApplicationController
     def process_breed_info
       breed = Breed.find_by(id: params[:breed_id])
       @doggie.breeds << breed if breed
+      if params[:breed_id].to_i > 280 && params[:breed_id].to_i < 294
+        @doggie.update(cat: true)
+      end
     end
 end

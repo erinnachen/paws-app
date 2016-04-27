@@ -124,7 +124,6 @@
 274, Dhole
 275, African Hunting Dog
 276, Hyena
-1000, Mix
 1200, Heeler
 1201, Dachshund
 1202, Akita
@@ -161,3 +160,5 @@
 1233, American Bulldog
 1234, Berger Picard
 1235, Australian Shepherd
+2000, Mix
+2001, Other
