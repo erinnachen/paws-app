@@ -27,7 +27,7 @@ $( document ).ready(function() {
         }
     });
 
-    $.getJSON("/charts/top_breeds/"+id, function(breeds) {
+    $.getJSON("/api/v1/charts/top_breeds/"+id, function(breeds) {
       for (i = 0; i < breeds.breeds.length; i++) {
         pawsBreedsChart.data.datasets[0].data[i] = breeds.count[i];
         pawsBreedsChart.data.labels[i] = breeds.breeds[i];

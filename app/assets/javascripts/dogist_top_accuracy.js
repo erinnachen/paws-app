@@ -24,7 +24,7 @@ $( document ).ready(function() {
         }
     });
 
-    $.getJSON("/charts/top_breeds_by_accuracy/"+id+"?dogist=true", function(breeds) {
+    $.getJSON("/api/v1/charts/top_breeds_by_accuracy/"+id+"?dogist=true", function(breeds) {
       for (i = 0; i < breeds.breeds.length; i++) {
         dogistAccuracyChart.data.datasets[0].data[i] = breeds.accuracy[i];
         dogistAccuracyChart.data.labels[i] = breeds.breeds[i];

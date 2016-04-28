@@ -10,7 +10,7 @@ class DogImagesController < ApplicationController
     if @doggie.save
       redirect_to dog_image_path(@doggie)
     else
-      flash.now[:danger]= @doggie.errors.full_messages
+      flash.now[:danger]= "Please add an image to the page"
       render :new
     end
   end

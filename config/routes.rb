@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/charts/top_breeds/:id", to: "charts#top_breeds", defaults: {format: :json}
-  get "/charts/top_breeds_by_accuracy/:id", to: "charts#top_breeds_by_accuracy", defaults: {format: :json}
+  namespace :api do
+    namespace :v1, defaults: {format: :json} do
+      get "/charts/top_breeds/:id", to: "charts#top_breeds"
+      get "/charts/top_breeds_by_accuracy/:id", to: "charts#top_breeds_by_accuracy"
+    end
+  end
 end

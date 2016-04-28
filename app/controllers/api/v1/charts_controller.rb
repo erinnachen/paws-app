@@ -1,4 +1,4 @@
-class ChartsController < ApplicationController
+class Api::V1::ChartsController < Api::V1::BaseController
   respond_to :json
 
   def top_breeds
