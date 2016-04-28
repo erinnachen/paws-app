@@ -15,8 +15,9 @@
           -else
             %h1.text-center PAWs believes your doggie is a:
             %h2.text-center= @doggie.breeds.first.name
+            %hr/
           <br>
-          %h4.text-center Is this correct?
+          %h3.text-center Is this correct?
           <br>
           %p.text-center
             =link_to "How did you know?!", result_dog_image_path(id: @doggie.id, result: "correct"), class: "btn btn-lg btn-success", id: "correct-btn", method: :patch
@@ -26,9 +27,9 @@
           <br>
           %p.text-center
             %button.btn.btn-lg.btn-danger#wrong-btn I am not a troll!
-        =form_for @doggie, id: "correction-form", url: wrong_result_dog_image_path(@doggie.id), method: "patch" do |f|
+        =form_for @doggie, id: "correction-form", url: wrong_result_dog_image_path(@doggie.id), method: "patch", class: "text-center bottom-margin-20" do |f|
           = f.collection_select(:breeds, Breed.ordered, :id, :name)
-          = f.submit "Update dog data"
+          = f.submit "Update dog data", class: "btn btn-lg btn-success"
     -else
       %h1.text-center You have registered your doggie data
-      %h4.text-center=link_to "See your PAWs report", report_dog_image_path(id: @doggie.id)
+      %h3.text-center=link_to "See your PAWs report", report_dog_image_path(id: @doggie.id)
