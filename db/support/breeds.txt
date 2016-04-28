@@ -2,7 +2,7 @@
 152, Japanese Spaniel
 153, Maltese Dog
 154, Pekinese
-155, Shih-tzu
+155, Shih Tzu
 156, Blenheim Spaniel
 157, Papillon
 158, Toy Terrier
@@ -26,7 +26,7 @@
 176, Saluki
 177, Scottish Deerhound
 178, Weimaraner
-179, Staffordshire Bullterrier
+179, Staffordshire Bull Terrier
 180, American Staffordshire Terrier
 181, Bedlington Terrier
 182, Border Terrier
@@ -35,7 +35,7 @@
 185, Norfolk Terrier
 186, Norwich Terrier
 187, Yorkshire Terrier
-188, Wire-haired Fox Terrier
+188, Wire Fox Terrier
 189, Lakeland Terrier
 190, Sealyham Terrier
 191, Airedale Terrier
@@ -46,7 +46,7 @@
 196, Miniature Schnauzer
 197, Giant Schnauzer
 198, Standard Schnauzer
-199, Scotch Terrier
+199, Scottish Terrier
 200, Tibetan Terrier
 201, Silky Terrier
 202, Soft-coated Wheaten Terrier
@@ -57,14 +57,14 @@
 207, Golden Retriever
 208, Labrador Retriever
 209, Chesapeake Bay Retriever
-210, German Short-haired Pointer
+210, German Shorthaired Pointer
 211, Vizsla
 212, English Setter
 213, Irish Setter
 214, Gordon Setter
 215, Brittany Spaniel
 216, Clumber
-217, English Springer
+217, English Springer Spaniel
 218, Welsh Springer Spaniel
 219, Cocker Spaniel
 220, Sussex Spaniel
@@ -72,7 +72,7 @@
 222, Kuvasz
 223, Schipperke
 224, Groenendael
-225, Malinois
+225, Belgian Malinois
 226, Briard
 227, Kelpie
 228, Komondor
@@ -82,13 +82,13 @@
 232, Border Collie
 233, Bouvier Des Flandres
 234, Rottweiler
-235, German Shepherd
-236, Doberman
+235, German Shepherd Dog
+236, Doberman Pinscher
 237, Miniature Pinscher
 238, Greater Swiss Mountain Dog
 239, Bernese Mountain Dog
 240, Appenzeller
-241, Entlebucher
+241, Entlebucher Mountain Dog
 242, Boxer
 243, Bull Mastiff
 244, Tibetan Mastiff
@@ -96,7 +96,7 @@
 246, Great Dane
 247, Saint Bernard
 248, American Eskimo Dog
-249, Malamute
+249, Alaskan Malamute
 250, Siberian Husky
 251, Dalmatian
 252, Affenpinscher
@@ -107,9 +107,9 @@
 257, Great Pyrenees
 258, Samoyed
 259, Pomeranian
-260, Chow
+260, Chow Chow
 261, Keeshond
-262, Brabancon Griffon
+262, Brussels Griffon
 263, Pembroke Welsh Corgi
 264, Cardigan Welsh Corgi
 265, Toy Poodle
@@ -124,5 +124,41 @@
 274, Dhole
 275, African Hunting Dog
 276, Hyena
-1000, Mix
-1001, Other
+1200, Heeler
+1201, Dachshund
+1202, Akita
+1203, Pharaoh Hound
+1204, Miniature Australian Shepherd
+1205, Goldendoodle
+1206, Anatolian Shepherd
+1207, Shiba Inu
+1208, Havanese
+1209, Cavalier King Charles Spaniel
+1210, Small Münsterländer
+1211, English Bulldog
+1212, Jack Russell Terrier
+1213, Pit Bull
+1214, Louisiana Catahoula Leopard Dog
+1215, Cavachon
+1216, Nova Scotia Duck Tolling Retriever
+1217, German Wirehaired Pointer
+1218, Bichon Frisé
+1219, English Pointer
+1220, Portuguese Water Dog
+1221, Welsh Terrier
+1222, Cane Corso
+1223, Pekingese
+1224, Alaskan Klee Kai
+1225, Japanese Spitz
+1226, Neapolitan Mastiff
+1227, Dogue de Bordeaux
+1228, Australian Cattle Dog
+1229, Chinese Crested Dog
+1230, Wirehaired Pointing Griffon
+1231, Dogo Argentino
+1232, Shar Pei
+1233, American Bulldog
+1234, Berger Picard
+1235, Australian Shepherd
+2000, Mix
+2001, Other

@@ -14,7 +14,7 @@ RSpec.feature "User sees prediction for analyzer accuracy by breed", type: :feat
 
     visit "dog_images/#{image.id}/report"
 
-    within(".statistics") do
+    within(".status") do
       expect(page).to have_content "PAWs Accuracy for Australian Shepherds: 66.7%"
     end
   end

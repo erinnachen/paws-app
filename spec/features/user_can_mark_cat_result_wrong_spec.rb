@@ -27,9 +27,6 @@ RSpec.feature "User sets cat result to wrong", type: :feature do
       within(".status") do
         expect(page).to have_content "Breed: Chihuahua"
         expect(page).to have_content "PAWs was wrong"
-      end
-
-      within(".statistics") do
         expect(page).to have_content "PAWs Accuracy for Chihuahuas: 0.0%"
       end
     end

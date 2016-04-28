@@ -32,9 +32,6 @@ RSpec.feature "User sets image result to wrong", type: :feature do
       within(".status") do
         expect(page).to have_content "Breed: Chihuahua"
         expect(page).to have_content "PAWs was wrong"
-      end
-
-      within(".statistics") do
         expect(page).to have_content "PAWs Accuracy for Chihuahuas: 33.3%"
       end
     end
@@ -69,9 +66,6 @@ RSpec.feature "User sets image result to wrong", type: :feature do
       within(".status") do
         expect(page).to have_content "Breed: Australian Shepherd"
         expect(page).to have_content "PAWs was correct"
-      end
-
-      within(".statistics") do
         expect(page).to have_content "PAWs Accuracy for Australian Shepherds: 66.7%"
       end
     end
