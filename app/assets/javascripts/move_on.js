@@ -12,7 +12,7 @@ $( document ).ready(function() {
     $.getJSON("http://6eb4715c.ngrok.io/api/v1/dog_image_categories",
       {image: image_url},
       function(result){
-        $.ajax({ url: "/dog_images/"+id,
+        $.ajax({ url: "/api/v1/dog_images/"+id,
                  type: 'PUT',
                  data: "breed_id="+result["breed_id"],
                  complete: function(data){

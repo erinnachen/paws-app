@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     namespace :v1, defaults: {format: :json} do
       get "/charts/top_breeds/:id", to: "charts#top_breeds"
       get "/charts/top_breeds_by_accuracy/:id", to: "charts#top_breeds_by_accuracy"
+      resources :dog_images, only: [:update]
     end
   end
 end

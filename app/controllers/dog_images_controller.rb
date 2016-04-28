@@ -10,7 +10,7 @@ class DogImagesController < ApplicationController
     if @doggie.save
       redirect_to dog_image_path(@doggie)
     else
-      flash.now[:danger]= "Please add an image to the page"
+      flash.now[:danger]= "Please add an image to analyze!!!"
       render :new
     end
   end
@@ -19,13 +19,6 @@ class DogImagesController < ApplicationController
     @doggie = current_user.dog_images.find(params[:id])
   end
 
-  def update
-    @doggie = current_user.dog_images.find(params[:id])
-    process_breed_info
-    if @doggie.save
-      head :ok, content_type: "text/json"
-    end
-  end
 
   def update_result
     @doggie = DogImage.find(params[:id])
@@ -70,14 +63,10 @@ class DogImagesController < ApplicationController
   private
 
     def dog_image_params
-      params.require(:dog_image).permit(:image)
-    end
-
-    def process_breed_info
-      breed = Breed.find_by(id: params[:breed_id])
-      @doggie.breeds << breed if breed
-      if params[:breed_id].to_i > 280 && params[:breed_id].to_i < 294
-        @doggie.update(cat: true)
+      if params[:dog_image]
+        params.require(:dog_image).permit(:image)
+      else
+        {}
       end
     end
 end
