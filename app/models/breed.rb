@@ -18,7 +18,7 @@ class Breed < ActiveRecord::Base
   end
 
   def self.ordered
-    breeds = where.not(id: 1000).order(name: :asc)
+    breeds = where.not(id: 2000, id: 2001).order(name: :asc)
     breeds << Breed.find_or_create_by(id: 2000, name: "Mix")
     breeds << Breed.find_or_create_by(id: 2001, name: "Other")
     breeds << Breed.new(id: 285, name: "Actually a cat")

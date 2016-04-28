@@ -31,18 +31,26 @@ class DogImagesController < ApplicationController
     if params[:dog_image][:breeds].to_i == 285 && !@doggie.cat
       @doggie.update(result: "wrong", cat: true)
       redirect_to analysis_dog_image_path(@doggie.id) and return
-    elsif params[:dog_image][:breeds].to_i == 285
+    elsif params[:dog_image][:breeds].to_i == 285 && @doggie.cat
       @doggie.update(result: "correct")
       redirect_to analysis_dog_image_path(@doggie.id) and return
-    elsif !@doggie.breeds.first || @doggie.breeds.first.id != params[:dog_image][:breeds].to_i
-      @doggie.update(result: "wrong")
+    elsif @doggie.cat && params[:dog_image][:breeds].to_i != 285 && params[:dog_image][:breeds].to_i != 1002 #
       flash[:alert] = "SOOOO SOOO0 SORRY for the troll video" if @doggie.cat
       @doggie.cat = false
+      @doggie.update(result: "wrong")
       @doggie.dog_breeds.destroy_all
       @doggie.breeds << Breed.find(params[:dog_image][:breeds].to_i)
       @doggie.save
-    else
+    elsif params[:dog_image][:breeds].to_i == 1002 && @doggie.breeds.empty?
       @doggie.update(result: "correct")
+    elsif params[:dog_image][:breeds].to_i == 1002
+      @doggie.dog_breeds.destroy_all
+      @doggie.update(result: "wrong")
+    else
+      @doggie.update(result: "wrong")
+      @doggie.dog_breeds.destroy_all
+      @doggie.breeds << Breed.find(params[:dog_image][:breeds].to_i)
+      @doggie.save
     end
     redirect_to report_dog_image_path(@doggie.id)
   end
