@@ -7,7 +7,7 @@ namespace :dogist do
     twitter = TwitterService.new
 
     max_id = 725107899756888064
-    16.times do |count|
+    3.times do |count|
       tweets_info = twitter.get_dogist_tweets(max_id)
       tweets_info.each_with_index do |tweet, ind|
         begin
