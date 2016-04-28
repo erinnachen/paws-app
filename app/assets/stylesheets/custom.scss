@@ -8,7 +8,7 @@ body {
 }
 
 .fat-border {
-  border: 3px solid black;
+  border: 3px solid #41A317;
 }
 
 .top-margin-20 {
@@ -31,13 +31,12 @@ body {
   background-color: white;
 }
 
-#dog-image {
+.dog-image {
   background-color: white;
   display: block;
   overflow: hidden;
   height: 400px;
   width: 400px;
-  position: relative;
 }
 
 .dog-image-analysis {
@@ -46,11 +45,10 @@ body {
 
 hr {
   border-width: 3px;
-  color: magenta;
 }
 
 #dog-bg {
   margin-top: 30px;
-  max-width: 900px;
+  max-width: 800px;
   background-color: white;
 }

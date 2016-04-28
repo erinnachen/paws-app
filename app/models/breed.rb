@@ -52,7 +52,7 @@ class Breed < ActiveRecord::Base
       user = User.find_or_create_by(name: "thedogist")
       top_breeds = self.select("breeds.*, count(dog_breeds.breed_id) AS image_count").joins(:dog_images).group("breeds.id").order('image_count DESC').where(dog_images: {user_id: user.id}).first(8)
       if !top_breeds.include?(include_breed) && include_breed
-        breed = get_breed(include_breed) unless top_breeds.include?(include_breed)
+        breed = get_breed_dogist(include_breed) unless top_breeds.include?(include_breed)
         top_breeds.pop
         top_breeds << breed
       else

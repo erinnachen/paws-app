@@ -1,6 +1,7 @@
 .container.dog-image-report
   .col-md-12.fat-border.top-margin-20.bottom-margin-20.white-bg
     %h1.text-center PAWs Report
+    %hr/
     .status.row
       .col-md-6
         =image_tag @doggie.image,
@@ -19,10 +20,10 @@
     .accuracy
       .row
         .text-center.col-md-6
-          %h3 PAWs accuracy for images taken by users
+          %h3 PAWs accuracy for images from users
           %canvas#paws-accuracy{width:"600",height:"400"}
         .text-center.col-md-6
-          %h3 PAWs accuracy for images taken by the Dogist
+          %h3 PAWs accuracy for images from the Dogist
           %canvas#dogist-accuracy{width:"600",height:"400"}
       .row#top-breeds-accuracy
         .text-center.col-md-6

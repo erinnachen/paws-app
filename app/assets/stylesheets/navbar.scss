@@ -1,5 +1,6 @@
 .navbar {
   height: 80px;
+  background-color: #41A317;
 }
 
 .navbar-brand {
@@ -7,23 +8,29 @@
   font-size: 3em;
   padding-top: 30px;
   margin-left: 15px;
+  color: white;
 }
 
 .navbar-text {
   font-family: 'Patrick Hand', cursive;
   font-size: 1.5em;
   padding-top: 10px;
+  color: white;
 }
 
 .navbar-text {
   font-family: 'Patrick Hand', cursive;
   font-size: 1.5em;
   line-height: 20px;
+  color: white;
 }
 
-.logout {
+.logging {
   font-family: 'Patrick Hand', cursive;
   font-size: 1.5em;
   padding-top: 10px;
   margin-right: 40px;
+  a {
+    color: white;
+  }
 }

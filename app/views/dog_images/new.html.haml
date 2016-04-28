@@ -1,10 +1,10 @@
 .container
   .col-md-6.col-md-offset-3
-    .fat-border.top-margin-20.white-bg.text-center
+    .fat-border.top-margin-20.bottom-margin-20.white-bg.text-center
       =image_tag "dog#{rand(6)+1}.png",
                  class: "img-responsive",
                  alt: "dog placeholder"
       =form_for @doggie, html: { multipart: true } do |f|
-        = f.file_field :image
         .text-center
+          = f.file_field :image
           = f.submit "Analyze image", class: "btn btn-lg btn-success paw-button text-center bottom-margin-20"
