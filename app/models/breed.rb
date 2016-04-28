@@ -93,12 +93,13 @@ class Breed < ActiveRecord::Base
     end
 
     def self.get_breed(breed)
-      self.select("breeds.*, count(dog_breeds.breed_id) AS image_count").joins(:dog_breeds).group("breeds.id").order('image_count DESC').where(id: breed.id).first
+      user = User.find_by(name: "thedogist")
+      self.select("breeds.*, count(dog_breeds.breed_id) AS image_count").joins(:dog_images).group("breeds.id").order('image_count DESC').where("breeds.id = ? AND dog_images.user_id != ?",breed.id, user.id).first
     end
 
     def self.get_breed_dogist(breed)
       user = User.find_by(name: "thedogist")
-      self.select("breeds.*, count(dog_breeds.breed_id) AS image_count").joins(:dog_images).group("breeds.id").order('image_count DESC').where(id: breed.id, dog_images: {user_id: user.id}).first
+      self.select("breeds.*, count(dog_breeds.breed_id) AS image_count").joins(:dog_images).group("breeds.id").order('image_count DESC').where(id: breed.id).first
     end
 
 end
