@@ -1,5 +1,5 @@
 .container.dog-image-report
-  .col-md-12.fat-border.top-margin-20.white-bg
+  .col-md-12.fat-border.top-margin-20.bottom-margin-20.white-bg
     %h1.text-center PAWs Report
     .status.row
       .col-md-6
@@ -10,22 +10,34 @@
       .col-md-6
         -if @doggie.breeds.first
           %h3= "Breed: #{@doggie.breeds.first.name}"
+          %h3= "PAWs was #{@doggie.result}"
+          %h3= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
         -else
           %h3= "Breed was unknown"
-        %h3= "PAWs was #{@doggie.result}"
+          %h3= "PAWs was #{@doggie.result}"
+    %hr/
+    .accuracy
+      .row
+        .text-center.col-md-6
+          %h3 PAWs accuracy for images taken by users
+          %canvas#paws-accuracy{width:"600",height:"400"}
+        .text-center.col-md-6
+          %h3 PAWs accuracy for images taken by the Dogist
+          %canvas#dogist-accuracy{width:"600",height:"400"}
+      .row#top-breeds-accuracy
+        .text-center.col-md-6
+          - @top_breeds_by_accuracy.each do |breed|
+            %li= "#{breed.name} -- Accuracy: #{format_percentage(breed.accuracy)} %"
+        .text-center.col-md-6
     %hr/
     .statistics
       .row
-        -if @doggie.breeds.first
-          %h3.text-center= "PAWs Accuracy for #{@doggie.breeds.first.name}s: #{format_percentage(@doggie.breeds.first.analyzer_accuracy)}%"
-      .row
         .text-center.col-md-6
           %h3 Top breeds analyzed by PAWs
-          %canvas#fun{width:"600",height:"400"}
+          %canvas#paws-breeds{width:"600",height:"400"}
         .text-center.col-md-6
           %h3 Top breeds photographed by the Dogist
-          %canvas#dogist-hist{width:"600",height:"400"}
-
+          %canvas#dogist-breeds{width:"600",height:"400"}
       .row#top-breeds-analyzed
         .text-center.col-md-6
           - @top_breeds.each do |breed|

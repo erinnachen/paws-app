@@ -9,14 +9,13 @@ class BreedParser
 
     possibilities.each do |chunk|
       chunk = preprocess(chunk)
-      puts chunk
       break if !chunk || chunk.empty? || chunk.length < 3
       chunks = chunk.split("&amp;").map(&:strip)
       found = []
       chunks.each do |chunk|
         break if chunk.empty?
         found << breed_list.find_all do |breed|
-          breed.include?(chunk.downcase) || breed.include?(chunk[0..-2].downcase) && ((chunk[0..-2].length.to_f)/breed.length > 0.5)
+          breed.include?(chunk.downcase) || breed.include?(chunk[0..-2].downcase) && ((chunk[0..-2].length.to_f)/breed.length > 0.3)
         end
       end
       found.flatten!
@@ -29,13 +28,13 @@ class BreedParser
             chunks = chunk.split("/").map(&:strip)
             chunks.each do |chunk|
               found = breed_list.find_all do |breed|
-                (breed.include? (chunk.downcase) || breed.include?(chunk[0..-2].downcase)) && ((chunk[0..-2].length.to_f)/breed.length > 0.35)
+                (breed.include? (chunk.downcase) || breed.include?(chunk[0..-2].downcase)) && ((chunk[0..-2].length.to_f)/breed.length > 0.3)
               end
               breeds += found unless found.empty?
             end
           else
             found = breed_list.find_all do |breed|
-              breed.include? (chunk.downcase) || breed.include?(chunk[0..-2].downcase) && ((chunk[0..-2].length.to_f)/breed.length > 0.35)
+              breed.include? (chunk.downcase) || breed.include?(chunk[0..-2].downcase) && ((chunk[0..-2].length.to_f)/breed.length > 0.3)
             end
             breeds += found unless found.empty?
           end

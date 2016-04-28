@@ -61,6 +61,7 @@ class DogImagesController < ApplicationController
   def report
     @doggie = current_user.dog_images.find(params[:id])
     @top_breeds = Breed.top_breeds(@doggie.breeds.first)
+    @top_breeds_by_accuracy = Breed.top_breeds_by_accuracy(@doggie.breeds.first)
     if @doggie.cat?
       redirect_to analysis_dog_image_path(@doggie.id)
     end
