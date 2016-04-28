@@ -1,6 +1,6 @@
 class DogistImageAnalyzer
   def initialize
-    @_conn = Faraday.new(:url => 'http://localhost:5000') do |faraday|
+    @_conn = Faraday.new(:url => 'http://6eb4715c.ngrok.io') do |faraday|
       faraday.request  :url_encoded
       faraday.response :logger
       faraday.adapter  Faraday.default_adapter

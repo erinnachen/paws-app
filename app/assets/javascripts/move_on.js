@@ -5,9 +5,7 @@ $( document ).ready(function() {
     var id = url[url.length - 1]
     var image_url = $("#dog-image").attr("src")
 
-    //getJSON("http://162.243.13.94:8080/api/v1/dog_image_categories",
-    console.log(image_url)
-    $.getJSON("http://localhost:5000/api/v1/dog_image_categories",
+    $.getJSON("http://6eb4715c.ngrok.io/api/v1/dog_image_categories",
       {image: image_url},
       function(result){
         $.ajax({ url: "/dog_images/"+id,

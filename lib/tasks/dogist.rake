@@ -1,26 +1,26 @@
 namespace :dogist do
-  desc "Build a base of dogist images"
+  desc "Build a base of dogist breeds"
   task get_initial_images: :environment do
     dogist = User.find_or_create_by(name: "thedogist")
+    di_analyzer = DogistImageAnalyzer.new
+    bp = BreedParser.new
     twitter = TwitterService.new
-    parser = BreedParser.new
-    tweets_info = twitter.get_dogist_tweets
-    tweets_info.each do |tweet|
-      begin
-        image_url = tweet[:entities][:media].first[:media_url]
-        response = Faraday.get("http://localhost:5000/api/v1/dog_image_categories?image=#{image_url}")
-        breed_id = JSON.parse(response.body)["breed_id"]
-        guessed_breed = Breed.find_by(id: breed_id)
-        puts "Guessed: #{guessed_breed.name}" if guessed_breed
-        puts "Dogist description: #{tweet[:text]}"
-        puts "------------------------------------------------------------------"
-        dogist_breeds = parser.parse_from_tweet(tweet[:text])
-        result = ResultChecker.check(guessed_breed, dogist_breeds) if guessed_breed
-        DogImage.create(user: dogist, image: image_url, breeds: dogist_breeds, result: result)
-      rescue Exception => e
-        puts e.message
-        puts e.backtrace.inspect
+
+    max_id = 725107899756888064
+    16.times do |count|
+      tweets_info = twitter.get_dogist_tweets(max_id)
+      tweets_info.each_with_index do |tweet, ind|
+        begin
+          puts "Tweet ##{ind} in batch #{count} with ID: #{tweet[:id]} Created at: #{tweet[:created_at]}"
+          puts "Dogist description: #{tweet[:text]}"
+          dog_image = di_analyzer.create_image_from_tweet(tweet, dogist)
+          puts "Dog image ID: #{dog_image.id} created, with result: #{dog_image.result}, Image breeds: #{dog_image.breeds.map(&:name).join(", ")}"
+          puts
+        rescue Exception => e
+          puts "Tweet ##{ind} had an error"
+        end
       end
+      max_id = tweets_info.last[:id].to_i
     end
   end
 end
